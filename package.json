@@ -40,6 +40,7 @@
     "eslint-config-next": "13.4.12",
     "lucide-react": "^0.344.0",
     "next": "13.4.12",
+    "overshom-wayforpay": "^1.1.0",
     "postcss": "8.4.35",
     "react": "18.2.0",
     "react-confetti": "^6.1.0",
