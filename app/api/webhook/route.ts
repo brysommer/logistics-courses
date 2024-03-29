@@ -17,6 +17,7 @@ export async function POST(req: Request) {
   }
 
   console.log(data);
+  console.log(data?.products[0]);
 
   const metadata = data?.products[0].name.split(',');
   const userId = metadata[1];
