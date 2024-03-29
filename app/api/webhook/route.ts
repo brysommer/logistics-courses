@@ -16,10 +16,12 @@ export async function POST(req: Request) {
     return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 })
   }
 
+  const userId = data?.orderReference;
+  const courseId = data?.products[0].name;
 
   if (data.transactionStatus === 'Approved') {
     console.log(data);
-    /*
+    
     if (!userId || !courseId) {
       return new NextResponse(`Webhook Error: Missing metadata`, { status: 400 });
     }
@@ -31,7 +33,7 @@ export async function POST(req: Request) {
       }
     });
 
-    */
+    
   } else {
     return new NextResponse(`Webhook Error: Unhandled event type`, { status: 200 })
   }

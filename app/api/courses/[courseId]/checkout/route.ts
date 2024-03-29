@@ -42,8 +42,8 @@ export async function POST(
 
 
     const session = await wfp.createInvoiceUrl({
-        orderReference: (Math.random() * 1e17).toString(),
-        productName: [course.title],
+        orderReference: user.id,
+        productName: [course.id],
         productCount: [1],
         productPrice: [Math.round(course.price!)],
     });
