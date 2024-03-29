@@ -16,6 +16,7 @@ export async function POST(req: Request) {
     return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 })
   }
 
+  console.log(data);
 
   const metadata = data?.products[0].name.split(',');
   const userId = metadata[1];
