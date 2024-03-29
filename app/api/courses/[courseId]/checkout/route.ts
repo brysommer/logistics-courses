@@ -40,13 +40,16 @@ export async function POST(
     }
 
 
-
+    console.log(course.id)
+    
     const session = await wfp.createInvoiceUrl({
         orderReference: user.id,
         productName: [course.id],
         productCount: [1],
         productPrice: [Math.round(course.price!)],
     });
+
+    
 
     return NextResponse.json({ url: session.value?.invoiceUrl });
   } catch (error) {
