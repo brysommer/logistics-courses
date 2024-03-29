@@ -10,12 +10,14 @@ export async function POST(req: Request) {
 
   let data;
 
+  data = wfp.parseAndVerifyIncomingWebhook(JSON.parse(body));
+  /*
   try {
     data = wfp.parseAndVerifyIncomingWebhook(JSON.parse(body));
   } catch (error: any) {
     return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 })
   }
-
+  */  
   console.log(data);
   console.log(data?.products[0]);
 
