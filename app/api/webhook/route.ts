@@ -16,8 +16,10 @@ export async function POST(req: Request) {
     return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 })
   }
 
-  const userId = data?.orderReference;
-  const courseId = data?.products[0].name;
+
+  const metadata = data?.products[0].name.split(',');
+  const userId = metadata[1];
+  const courseId = metadata[0];
 
   if (data.transactionStatus === 'Approved') {
     console.log(data);
