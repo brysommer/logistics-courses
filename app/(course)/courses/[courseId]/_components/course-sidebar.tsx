@@ -10,6 +10,7 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
   interface PartWithChapters extends Part {
     chapters: (Chapter & {
@@ -61,7 +62,7 @@ export const CourseSidebar = async ({
                 {course.parts && course.parts.length > 0 ? 
                     <Accordion type="single" collapsible >
                         {course.parts.map((part, index) => (
-                            <AccordionItem key={index} value={`item-${index}`} className="" >
+                            <AccordionItem key={index} value={`item-${index}`}  >
                                 <AccordionTrigger>{part.title}</AccordionTrigger>
                                 <AccordionContent>
                                     {part.chapters.map((chapter) => (
