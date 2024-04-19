@@ -1,5 +1,5 @@
 import { Menu } from "lucide-react";
-import { Chapter, Course, UserProgress } from "@prisma/client";
+import { Chapter, Course, UserProgress, Part } from "@prisma/client";
 
 import {
   Sheet,
@@ -9,14 +9,21 @@ import {
 
 import { CourseSidebar } from "./course-sidebar";
 
+interface PartWithChapters extends Part {
+  chapters: (Chapter & {
+      userProgress: UserProgress[] | null;
+  })[];
+}
+
 interface CourseMobileSidebarProps {
   course: Course & {
-    chapters: (Chapter & {
-      userProgress: UserProgress[] | null;
-    })[];
+      chapters: (Chapter & {
+          userProgress: UserProgress[] | null;
+      })[];
+      parts: PartWithChapters[] | null;
   };
   progressCount: number;
-};
+}
 
 export const CourseMobileSidebar = ({ 
   course,
