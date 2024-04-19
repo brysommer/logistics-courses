@@ -1,17 +1,24 @@
-import { Chapter, Course, UserProgress } from "@prisma/client"
+import { Chapter, Course, UserProgress, Part } from "@prisma/client"
 
 import { NavbarRoutes } from "@/components/ui/navbar-routes";
 
 import { CourseMobileSidebar } from "./course-mobile-sidebar";
 
+interface PartWithChapters extends Part {
+  chapters: (Chapter & {
+      userProgress: UserProgress[] | null;
+  })[];
+}
+
 interface CourseNavbarProps {
   course: Course & {
-    chapters: (Chapter & {
-      userProgress: UserProgress[] | null;
-    })[];
+      chapters: (Chapter & {
+          userProgress: UserProgress[] | null;
+      })[];
+      parts: PartWithChapters[] | null;
   };
   progressCount: number;
-};
+}
 
 export const CourseNavbar = ({
   course,
