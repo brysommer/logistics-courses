@@ -22,6 +22,7 @@ model Course {
   category Category? @relation(fields: [categoryId], references: [id])
 
   chapters Chapter[]
+  parts Part[]
   attachments Attachment[]
   purchases Purchase[]
 
@@ -52,6 +53,22 @@ model Attachment {
   @@index([courseId])
 }
 
+model Part {
+  id String @id @default(uuid())
+  title String @db.Text
+  courseId String
+  position Int
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  chapters Chapter[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseId])
+}
+
+
 model Chapter {
   id String @id @default(uuid())
   title String
@@ -60,11 +77,13 @@ model Chapter {
   position Int
   isPublished Boolean @default(false)
   isFree Boolean @default(false)
+  partId String?
 
   muxData MuxData?
 
   courseId String
   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  part Part? @relation(fields: [partId], references: [id], onDelete: Cascade)
 
   userProgress UserProgress[]
 
@@ -72,6 +91,7 @@ model Chapter {
   updatedAt DateTime @updatedAt
 
   @@index([courseId])
+  @@index([partId])
 }
 
 model MuxData {

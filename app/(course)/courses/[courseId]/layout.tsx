@@ -7,6 +7,7 @@ import { getProgress } from "@/actions/get-progress";
 import { CourseSidebar } from "./_components/course-sidebar";
 import { CourseNavbar } from "./_components/course-navbar";
 
+
 const CourseLayout = async ({
   children,
   params
@@ -34,12 +35,32 @@ const CourseLayout = async ({
             where: {
               userId,
             }
-          }
+          },
         },
         orderBy: {
           position: "asc"
         }
       },
+      parts: {
+        include: {
+          chapters: {
+            where: {
+              isPublished: true,
+            },
+            include: {
+              userProgress: {
+                where: {
+                  userId,
+                }
+              },
+            },
+            orderBy: {
+              position: "asc"
+            }
+    
+          }
+        }
+      }
     },
   });
 
