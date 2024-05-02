@@ -12,7 +12,7 @@ const guestRoutes = [
     },
     {
         icon: Compass,
-        label: "Завдання",
+        label: "Пакети навчання",
         href: "search"
     },
     {

@@ -38,6 +38,11 @@ const CourseIdPage = async ({
                   position: "asc",
                 },
             },
+            parts: {
+                orderBy: {
+                  position: "asc",
+                },
+            },
             attachments: {
               orderBy: {
                 createdAt: "desc",
@@ -45,13 +50,6 @@ const CourseIdPage = async ({
             },
         },
     })
-
-    const categories = await db.category.findMany({
-        orderBy: {
-          name: "asc",
-        },
-      });
-
 
     if (!course) {
         return redirect("/");
@@ -63,6 +61,7 @@ const CourseIdPage = async ({
         course.imageUrl,
         course.price,
         course.chapters.some(chapter => chapter.isPublished),
+        
     ];
 
     const totalFields = requiredFields.length;
@@ -125,6 +124,7 @@ const CourseIdPage = async ({
                             Розділи курсу
                         </h2>
                     </div>
+                    
                     <ChaptersForm 
                         initialData={course}
                         courseId={course.id}

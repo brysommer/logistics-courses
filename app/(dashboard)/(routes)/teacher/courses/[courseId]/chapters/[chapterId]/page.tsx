@@ -12,6 +12,7 @@ import { ChapterDescriptionForm } from "./_components/chapter-description-form";
 import { ChapterAccessForm } from "./_components/chapter-access-form";
 import { ChapterVideoForm } from "./_components/chapter-video-form";
 import { ChapterActions } from "./_components/chapter-actions";
+import { ChapterPartForm } from "./_components/chapter-part-form";
 
 const ChapterIdPage = async ({
   params
@@ -31,7 +32,15 @@ const ChapterIdPage = async ({
     },
     include: {
       muxData: true,
+      part: true,
     },
+    
+  });
+
+  const parts = await db.part.findMany({
+    where: {
+      courseId: params.courseId
+    }
   });
 
   if (!chapter) {
@@ -101,11 +110,18 @@ const ChapterIdPage = async ({
                 courseId={params.courseId}
                 chapterId={params.chapterId}
               />
+              <ChapterPartForm
+                initialData={chapter.part}
+                partsData={parts}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+              />
               <ChapterDescriptionForm
                 initialData={chapter}
                 courseId={params.courseId}
                 chapterId={params.chapterId}
               />
+              
             </div>
             <div>
               <div className="flex items-center gap-x-2">
