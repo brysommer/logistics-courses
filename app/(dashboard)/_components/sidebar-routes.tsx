@@ -8,7 +8,7 @@ const guestRoutes = [
     {
         icon: Layout,
         label: "Мій профіль",
-        href: "/",
+        href: "/bought",
     },
     {
         icon: Compass,
