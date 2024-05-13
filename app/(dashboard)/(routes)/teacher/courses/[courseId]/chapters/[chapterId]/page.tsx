@@ -13,6 +13,7 @@ import { ChapterAccessForm } from "./_components/chapter-access-form";
 import { ChapterVideoForm } from "./_components/chapter-video-form";
 import { ChapterActions } from "./_components/chapter-actions";
 import { ChapterPartForm } from "./_components/chapter-part-form";
+import { ChapterTimecodesForm } from "./_components/chapter-timecodes-form";
 
 const ChapterIdPage = async ({
   params
@@ -33,7 +34,8 @@ const ChapterIdPage = async ({
     include: {
       muxData: true,
       part: true,
-    },
+      cuePoints: true,
+    },   
     
   });
 
@@ -147,6 +149,10 @@ const ChapterIdPage = async ({
             <ChapterVideoForm
               initialData={chapter}
               chapterId={params.chapterId}
+              courseId={params.courseId}
+            />
+            <ChapterTimecodesForm
+              initialData={chapter}
               courseId={params.courseId}
             />
           </div>

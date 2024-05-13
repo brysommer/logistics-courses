@@ -4,13 +4,7 @@ const database = new PrismaClient();
 
 async function main() {
   try {
-    await database.category.createMany({
-      data: [
-        { name: "Базовий" },
-        { name: "Оптимальний" },
-        { name: "Максимальний" },
-      ]
-    });
+    await database.cuePoint.deleteMany();
 
     console.log("Success");
   } catch (error) {

@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { Attachment, Chapter } from "@prisma/client";
+import { Attachment, Chapter, CuePoint } from "@prisma/client";
 
 interface GetChapterProps {
   userId: string;
@@ -62,6 +62,8 @@ export const getChapter = async ({
         }
       });
 
+      
+
       nextChapter = await db.chapter.findFirst({
         where: {
           courseId: courseId,
@@ -85,6 +87,12 @@ export const getChapter = async ({
       }
     });
 
+    const cuePoints = await db.cuePoint.findMany({
+      where: {
+        chapterId: chapterId,
+      }
+    });
+
     return {
       chapter,
       course,
@@ -93,6 +101,7 @@ export const getChapter = async ({
       nextChapter,
       userProgress,
       purchase,
+      cuePoints
     };
   } catch (error) {
     console.log("[GET_CHAPTER]", error);
@@ -104,6 +113,7 @@ export const getChapter = async ({
       nextChapter: null,
       userProgress: null,
       purchase: null,
+      cuePoints: null
     }
   }
 }

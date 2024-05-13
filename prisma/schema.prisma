@@ -80,6 +80,7 @@ model Chapter {
   partId String?
 
   muxData MuxData?
+  cuePoints CuePoint[]
 
   courseId String
   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
@@ -92,6 +93,8 @@ model Chapter {
 
   @@index([courseId])
   @@index([partId])
+  
+
 }
 
 model MuxData {
@@ -101,6 +104,16 @@ model MuxData {
 
   chapterId String @unique
   chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+}
+
+model CuePoint {
+  id String @id @default(uuid())
+  time Int
+  value String
+
+  chapterId String
+  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  @@index([chapterId])
 }
 
 model UserProgress {

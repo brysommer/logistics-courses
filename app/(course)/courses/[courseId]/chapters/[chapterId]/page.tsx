@@ -11,6 +11,8 @@ import { VideoPlayer } from "./_components/video-player";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 
+
+
 const ChapterIdPage = async ({
   params
 }: {
@@ -22,6 +24,9 @@ const ChapterIdPage = async ({
     return redirect("/");
   } 
 
+
+  
+
   const {
     chapter,
     course,
@@ -30,6 +35,7 @@ const ChapterIdPage = async ({
     nextChapter,
     userProgress,
     purchase,
+    cuePoints
   } = await getChapter({
     userId,
     chapterId: params.chapterId,
@@ -43,6 +49,7 @@ const ChapterIdPage = async ({
 
   const isLocked = !chapter.isFree && !purchase;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
+ 
 
   return ( 
     <div>
@@ -68,6 +75,7 @@ const ChapterIdPage = async ({
             playbackId={muxData?.playbackId!}
             isLocked={isLocked}
             completeOnEnd={completeOnEnd}
+            cuePoints={cuePoints}
           />
         </div>
         <div>
@@ -93,6 +101,7 @@ const ChapterIdPage = async ({
           <div>
             <Preview value={chapter.description!} />
           </div>
+          
           {!!attachments.length && (
             <>
               <Separator />

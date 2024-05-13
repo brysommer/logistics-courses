@@ -32,6 +32,8 @@ export async function PUT(
       }
     })
 
+    console.log(userProgress)
+
     return NextResponse.json(userProgress);
   } catch (error) {
     console.log("[CHAPTER_ID_PROGRESS]", error);

@@ -2,13 +2,14 @@
 
 import axios from "axios";
 import MuxPlayer from "@mux/mux-player-react";
-import { useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Loader2, Lock } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useConfettiStore } from "@/hooks/use-confetti-store";
+import TranscriptRenderer from "./cuepoints-list";
 
 interface VideoPlayerProps {
   playbackId: string;
@@ -18,7 +19,11 @@ interface VideoPlayerProps {
   isLocked: boolean;
   completeOnEnd: boolean;
   title: string;
+  cuePoints: CuePoint[]
 };
+
+type CuePoint = { time: number; value: string  };
+
 
 export const VideoPlayer = ({
   playbackId,
@@ -28,6 +33,7 @@ export const VideoPlayer = ({
   isLocked,
   completeOnEnd,
   title,
+  cuePoints
 }: VideoPlayerProps) => {
   const [isReady, setIsReady] = useState(false);
   const router = useRouter();
@@ -55,6 +61,27 @@ export const VideoPlayer = ({
       toast.error("Трапилась помилка");
     }
   }
+/*
+  const cuePoints = [
+    {
+      time: 60,
+      value:
+        "1 minutes"
+    },
+    {
+      time: 120,
+      value:
+        "2 minutes"
+    },
+    {
+      time: 180,
+      value:
+        "3 minutes"
+    },
+  ];
+*/
+  const [currentTime, setCurrentTime] = useState(0);
+
 
   return (
     <div className="relative aspect-video">
@@ -81,8 +108,14 @@ export const VideoPlayer = ({
           onEnded={onEnd}
           autoPlay
           playbackId={playbackId}
+          currentTime={currentTime}
         />
       )}
+      <TranscriptRenderer 
+        cuePoints={cuePoints}
+        onCuePointSelected={({ time }) => setCurrentTime(time)}
+      />
+
     </div>
   )
 }
