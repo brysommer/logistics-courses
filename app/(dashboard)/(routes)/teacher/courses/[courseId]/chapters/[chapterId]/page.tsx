@@ -26,7 +26,7 @@ const ChapterIdPage = async ({
     return redirect("/");
   }
 
-  const chapter = await db.chapter.findUnique({
+  const chapter = await db.chapter.findFirst({
     where: {
       id: params.chapterId,
       courseId: params.courseId
