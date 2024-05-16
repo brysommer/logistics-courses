@@ -35,7 +35,9 @@ const ChapterIdPage = async ({
       muxData: true,
       part: true,
       cuePoints: {
-        
+        orderBy: {
+          time: "asc"
+        }
       },
     },   
     
