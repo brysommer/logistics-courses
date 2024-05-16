@@ -34,7 +34,9 @@ const ChapterIdPage = async ({
     include: {
       muxData: true,
       part: true,
-      cuePoints: true,
+      cuePoints: {
+        
+      },
     },   
     
   });
