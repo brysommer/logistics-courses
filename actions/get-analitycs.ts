@@ -44,7 +44,8 @@ export const getAnalitycs = async (userId: string) => {
         return {
             data,
             totalRevenue,
-            totalSales
+            totalSales,
+            purchases
         }
     } catch (error) {
         console.log("[GET_ANALYTICS]", error);
