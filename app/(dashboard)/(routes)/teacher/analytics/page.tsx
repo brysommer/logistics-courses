@@ -29,7 +29,6 @@ const AnalyticsPage = async () => {
         purchases
     } = await getAnalitycs(userId);
 
-    console.log(purchases)
     const simplifiedUsers = users.map(user => ({
         id: user.id,
         createdAt: user.createdAt,

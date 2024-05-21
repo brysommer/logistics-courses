@@ -22,11 +22,7 @@ const groupeByCourse = (purchases: PurchaseWithCourse[]) => {
 export const getAnalitycs = async (userId: string) => {
     try {
         const purchases = await db.purchase.findMany({
-            where: {
-                course: {
-                    userId: userId
-                }
-            },
+            
             include: {
                 course: true,
             }

@@ -1,6 +1,6 @@
 "use client"
 
-import { BarChart, Compass, Layout, List, Settings } from "lucide-react";
+import { BarChart, Compass, Layout, List, MessageSquareDashed, MessageSquareDiffIcon, MessageSquareX, Settings } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 
@@ -21,9 +21,9 @@ const guestRoutes = [
         href: "glossary"
     },
     {
-        icon: Settings,
-        label: "Налаштування",
-        href: "settings"
+        icon: MessageSquareDiffIcon,
+        label: "Зворотній звязок",
+        href: "feedback"
     }
 ]
 

@@ -13,6 +13,7 @@
   "dependencies": {
     "@clerk/localizations": "^1.28.2",
     "@clerk/nextjs": "^4.29.8",
+    "@emailjs/browser": "^4.3.3",
     "@hello-pangea/dnd": "^16.5.0",
     "@hookform/resolvers": "^3.3.4",
     "@mux/mux-node": "^8.2.0",
@@ -39,6 +40,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
+    "emailjs": "^4.0.3",
     "eslint": "8.57.0",
     "eslint-config-next": "13.4.12",
     "lucide-react": "^0.344.0",

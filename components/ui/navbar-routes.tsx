@@ -2,7 +2,7 @@
 
 import { UserButton, useAuth } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
-import { BarChart, Compass, LayoutDashboard, LayoutDashboardIcon, LogOut } from "lucide-react";
+import { BarChart, Compass, LayoutDashboard, LayoutDashboardIcon, LogOut, MessageSquareDiffIcon } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -30,11 +30,17 @@ export const NavbarRoutes = () => {
             <Compass className="h-4 w-4 mr-2" />
               Пакети навчання
           </Button>
-        </Link>
+        </Link>        
         <Link href="/glossary">
           <Button size="sm" variant="secondary">
             <BarChart className="h-4 w-4 mr-2" />
               Глоссарій
+          </Button>
+        </Link>
+        <Link href="/feedback">
+          <Button size="sm" variant="secondary">
+            <MessageSquareDiffIcon className="h-4 w-4 mr-2" />
+              Зворотній звязок
           </Button>
         </Link>
       </div>
