@@ -22,7 +22,7 @@ const guestRoutes = [
     },
     {
         icon: MessageSquareDiffIcon,
-        label: "Зворотній звязок",
+        label: "Запитання",
         href: "feedback"
     }
 ]

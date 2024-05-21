@@ -93,7 +93,7 @@ const ContactForm = ({
             <div className="mt-10 mx-5 border bg-slate-100 rounded-md p-10 ">
               <div>
                 <h1 className="text-2xl font-medium">
-                        Зворотній звязок
+                        Запитання
                 </h1>
               </div>
               <Form {...form}>

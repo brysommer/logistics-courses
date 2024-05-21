@@ -40,7 +40,7 @@ export const NavbarRoutes = () => {
         <Link href="/feedback">
           <Button size="sm" variant="secondary">
             <MessageSquareDiffIcon className="h-4 w-4 mr-2" />
-              Зворотній звязок
+              Запитання
           </Button>
         </Link>
       </div>
