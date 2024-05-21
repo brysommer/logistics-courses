@@ -69,7 +69,7 @@ const ContactForm = ({
         )
         .then(
           (result) => {
-            setStateMessage('Message sent!');
+            setStateMessage('Повідомлення відправлено');
             setIsSubmitting(false);
             setTimeout(() => {
               setStateMessage(null);
@@ -77,7 +77,7 @@ const ContactForm = ({
           },
           (error) => {
             console.log(error)
-            setStateMessage('Something went wrong, please try again later');
+            setStateMessage('Трапилась помилка, спробуйте пізніше');
             setIsSubmitting(false);
             setTimeout(() => {
               setStateMessage(null);
