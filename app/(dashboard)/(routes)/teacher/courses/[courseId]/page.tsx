@@ -14,6 +14,7 @@ import { AttachmentForm } from "./_components/attachment-form";
 import { ChaptersForm } from "./_components/chapter-form";
 import { Banner } from "@/components/banner";
 import { Actions } from "./_components/actions";
+import { PartsForm } from "./_components/parts-form";
 
 
 const CourseIdPage = async ({
@@ -79,7 +80,7 @@ const CourseIdPage = async ({
         />
       )}
     <div className="p-6">
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between ">
             <div className="flex flex-col gap-y-2">
                 <h1 className="text-2xl font-medium">
                     Налаштування курсу
@@ -126,6 +127,19 @@ const CourseIdPage = async ({
                     </div>
                     
                     <ChaptersForm 
+                        initialData={course}
+                        courseId={course.id}
+                    />
+                </div>
+                <div>
+                    <div className="flex items-center gap-x-2">
+                        <IconBadge icon={ListChecks} />
+                        <h2 className="text-xl">
+                            Сортування модулів
+                        </h2>
+                    </div>
+                    
+                    <PartsForm 
                         initialData={course}
                         courseId={course.id}
                     />

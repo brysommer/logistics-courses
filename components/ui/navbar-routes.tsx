@@ -22,7 +22,7 @@ export const NavbarRoutes = () => {
         <Link href="/bought">
           <Button size="sm" variant="secondary">
             <LayoutDashboardIcon className="h-4 w-4 mr-2" />
-              Мій профіль
+              Моє навчання
           </Button>
         </Link>
         <Link href="/search">

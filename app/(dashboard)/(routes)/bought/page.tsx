@@ -53,7 +53,7 @@ const SearchPage = async ({
           items={categories}
         />
         */}
-        <CoursesList items={filteredCourses} />
+        <CoursesList items={filteredCourses.length === 0 ? courses : filteredCourses} />
       </div>
     </>
    );

@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { CheckCircle, XCircle } from "lucide-react";
+import { ArrowBigRight, CheckCircle, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -25,6 +25,13 @@ export const CourseProgressButton = ({
   const router = useRouter();
   const confetti = useConfettiStore();
   const [isLoading, setIsLoading] = useState(false);
+
+  const onNext = async () => {
+      setIsLoading(true);
+      router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
+
+      setIsLoading(false);
+  }
 
   const onClick = async () => {
     try {
@@ -54,6 +61,7 @@ export const CourseProgressButton = ({
   const Icon = isCompleted ? XCircle : CheckCircle
 
   return (
+    <div className="gap-y-1 flex flex-col">
     <Button
       onClick={onClick}
       disabled={isLoading}
@@ -63,6 +71,19 @@ export const CourseProgressButton = ({
     >
       {isCompleted ? "Не виконане" : "Відмітити як виконане"}
       <Icon className="h-4 w-4 ml-2" />
-    </Button>
+    </Button> <br />
+    {nextChapterId &&
+      <Button
+        onClick={onNext}
+        disabled={isLoading}
+        type="button"
+        variant="success"
+        className="w-full md:w-auto"
+      >
+      {"До наступного уроку"}
+      <ArrowBigRight className="h-4 w-4 ml-2" />
+      </Button>
+    }
+    </div>
   )
 }

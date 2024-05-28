@@ -11,6 +11,7 @@ import {
     AccordionTrigger,
   } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
+import { CourseSidebarPart } from "./course-sidebar-item-part";
 
   interface PartWithChapters extends Part {
     chapters: (Chapter & {
@@ -60,13 +61,13 @@ export const CourseSidebar = async ({
             <div className="flex flex-col w-full">
 
                 {course.parts && course.parts.length > 0 ? 
-                    <Accordion type="single" collapsible >
+                    <Accordion type="single" collapsible  >
                         {course.parts.map((part, index) => (
-                            <AccordionItem key={index} value={`item-${index}`}  >
+                            <AccordionItem key={index} value={`item-${index}`} className="px-2"  >
                                 <AccordionTrigger>{part.title}</AccordionTrigger>
                                 <AccordionContent>
                                     {part.chapters.map((chapter) => (
-                                        <CourseSidebarItem 
+                                        <CourseSidebarPart 
                                             key={chapter.id}
                                             id={chapter.id}
                                             label={chapter.title}
@@ -79,6 +80,7 @@ export const CourseSidebar = async ({
                             </AccordionItem>
                         ))}
                     </Accordion>
+
                     : 
                     course.chapters.map((chapter) => (
                         <CourseSidebarItem 

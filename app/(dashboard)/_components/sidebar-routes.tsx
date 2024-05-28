@@ -3,11 +3,12 @@
 import { BarChart, Compass, Layout, List, MessageSquareDashed, MessageSquareDiffIcon, MessageSquareX, Settings } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
 
 const guestRoutes = [
     {
         icon: Layout,
-        label: "Мій профіль",
+        label: "Моє навчання",
         href: "/bought",
     },
     {
@@ -35,7 +36,7 @@ const teacherRoutes = [
     },
     {
         icon: BarChart,
-        label: "Аналітика",
+        label: "Користувачі",
         href: "/teacher/analytics"
     },
 ]
@@ -58,6 +59,14 @@ export const SidebarRoutes = () => {
                     />
                 ))
             }
+            <div className="flex items-center gap-x-2 pl-6">
+                <div className="flex items-center">
+                <UserButton                
+                    afterSignOutUrl="/bought"
+                />
+
+                </div>
+            </div>
         </div>
      );
 }
