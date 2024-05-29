@@ -106,7 +106,7 @@ const ChapterIdPage = async ({
             <>
               <Separator />
               <div className="p-4">
-                {attachments.map((attachment) => (
+                {chapter.attachments.map((attachment) => (
                   <a 
                     href={attachment.url}
                     target="_blank"
