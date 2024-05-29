@@ -42,6 +42,9 @@ const CourseLayout = async ({
         }
       },
       parts: {
+        orderBy: {
+          position: "asc"
+        },
         include: {
           chapters: {
             where: {

@@ -156,6 +156,7 @@ const CourseIdPage = async ({
                         courseId={course.id}
                     />
                 </div>
+                {/*
                 <div>
                     <div className="flex items-center gap-x-2">
                         <IconBadge icon={File} />
@@ -168,6 +169,7 @@ const CourseIdPage = async ({
                         courseId={course.id}
                     />
                 </div>
+    */}
             </div>
         </div>
     </div> 

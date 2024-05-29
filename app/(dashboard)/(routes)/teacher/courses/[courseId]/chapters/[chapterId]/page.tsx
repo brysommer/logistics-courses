@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Eye, LayoutDashboard, Video } from "lucide-react";
+import { ArrowLeft, Eye, File, LayoutDashboard, Video } from "lucide-react";
 
 import { db } from "@/lib/db";
 import { IconBadge } from "@/components/icon-badge";
@@ -14,6 +14,7 @@ import { ChapterVideoForm } from "./_components/chapter-video-form";
 import { ChapterActions } from "./_components/chapter-actions";
 import { ChapterPartForm } from "./_components/chapter-part-form";
 import { ChapterTimecodesForm } from "./_components/chapter-timecodes-form";
+import { AttachmentForm } from "./_components/attachment-form";
 
 const ChapterIdPage = async ({
   params
@@ -34,6 +35,11 @@ const ChapterIdPage = async ({
     include: {
       muxData: true,
       part: true,
+      attachments: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
       cuePoints: {
         orderBy: {
           time: "asc"
@@ -142,7 +148,21 @@ const ChapterIdPage = async ({
                 chapterId={params.chapterId}
               />
             </div>
+            <div>
+                    <div className="flex items-center gap-x-2">
+                        <IconBadge icon={File} />
+                        <h2 className="text-xl">
+                            Матеріали і додатки
+                        </h2>
+                    </div>
+                    <AttachmentForm
+                        initialData={chapter}
+                        courseId={params.courseId}
+                    />
+                </div>
+
           </div>
+          
           <div>
             <div className="flex items-center gap-x-2">
               <IconBadge icon={Video} />

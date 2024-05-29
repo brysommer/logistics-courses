@@ -17,8 +17,8 @@ const CourseIdPage = async ({
         },
         orderBy: {
           position: "asc"
-        }
-      }
+        }        
+      },
     }
   });
 
